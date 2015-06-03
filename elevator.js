@@ -4,47 +4,29 @@
 module.exports = {
 
   goto : function(floor, button){
+    //Check the floor       //check the button
+    if(floor >= 0 && floor <=3 && button >= 0 && button <=3){
 
-    return 'poop';
-  }
+      if(button > floor){
+        console.log('Welcome to floor ' + button);
+        return button;
 
-  floorCheck :function(floor, button){
+      }else if(floor > button){
+        button = button * -1;
+        console.log('Welcome to floor ' + (button * -1));
+        return (button * -1);
 
-    if(floor >= 0 && floor <=3){
-      goto(floor,button)
-    }else{
-      floor = 0;
-      goto(floor,button)
+      }else{
+        console.log('You are still on floor ' + button);
+        return button;
+      }
+
+    }
+    //either floor input or button input is not 0,1,2,3
+    else{
+      console.log('Floor not recognized. You have not gone anywhere!');
+      return 0;
     }
 
   }
-
-  buttonPush : function(floor, button){
-
-    if(button >= 0 && button <=3){
-      goto(floor,button)
-    }else{
-      button = floor;
-      goto(floor,button)
-    }
-
-  }
-
-  mover : function(floor, button){
-    if(button > floor){
-      goto(floor,button);
-    }else if(floor > button){
-      button = button * -1;
-      goto(floor, button)
-    }else{
-      goto(floor,button);
-    }
-  }
-
-
-
-
-
-
-
-};
+}
